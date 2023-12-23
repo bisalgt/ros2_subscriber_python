@@ -9,11 +9,20 @@
 
 - Need to resource the created pkg setup file in a new terminal before being able to run the package. `source path_to_pkg_root/install/setup.bash`
 
-- pkg can run using `ros2 run py_subscriber listener`
+- pkg can run using `ros2 run py_subscriber listener` [more details below]
 
 - Data will be saved to lidar_data folder in csv format. Contains all data from lidar [x, y, z, intensity in our case.]
 
 
+### We can pass command line arguments to the listener node. We have the option to choose the topic to subscribe the node, the fileprefix for saving file and fileformat (we only support csv for now). We only save lidar data for now (data of type sensor_msgs.msg.PointCloud2)
+
+### ros2 run py_subscriber listener -t /carla/ego_vehicle/semantic_lidar -s semantic_lidar_frame_ -f csv
+
+- -t or --ros-topic :- topic to subscribe to , default = /carla/ego_vehicle/lidar
+
+- -s or --save-fileprefix :- prefix of filename to save the file arriving on topic. default = frame_
+
+- -f or --outputfile-format :- Format to save, defaults to csv.
 
 
 ## System Setup
